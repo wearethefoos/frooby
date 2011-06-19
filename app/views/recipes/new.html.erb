@@ -1,0 +1,20 @@
+<h2>Submit a recipe</h2>
+<% form_tag recipes_url do %>
+  <fieldset>
+  <ol>
+  <li>
+    <label>Recipe title: </label>
+    <input name="recipe[title]" value="<%= @recipe.title %>"/>
+  </li>
+
+  <li>
+    <label>Url</label>
+    <input name="recipe[url]" value="<%= @recipe.url %>"/>
+  </li>
+
+  <li>
+    <input type="submit" value="Post" />
+  </li>
+  </ol>
+  </fieldset>
+<% end %>

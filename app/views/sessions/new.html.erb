@@ -1,0 +1,69 @@
+<div class="tabs">
+	<ul>
+		<li><%= link_to 'Sign In', '#signin' %></li>
+		<li><%= link_to 'Sign Up', '#signup' %></li>
+	</ul>
+	
+	<div id="signin">
+	<%- form_tag session_path do -%>
+	  <fieldset>
+	  <legend>Sign in</legend>
+	  <ol>
+	    <li>
+	      <%= label_tag 'email', 'Email' %>
+	      <%= text_field_tag :email %>
+	    </li>
+	    <li>
+	      <%= label_tag 'password', 'Password' %>
+	      <%= password_field_tag :password %>
+	    </li>
+	    <li class="submit">
+	      <%= submit_tag 'Sign In', :disable_with => 'Signing you in...' %>
+	      or <%= link_to 'sign up', '#signup' %>
+	    </li>
+	  </ol>
+	  </fieldset>
+	<%- end -%>
+  	</div>
+
+	<div id="signup">
+	<%- form_for @user do |form| -%>
+	  <fieldset>
+	  <legend>Sign up</legend>
+	  <% if @user.errors.any? %>
+	  <div id="errorExplanation">
+	    <h2><%= pluralize(@user.errors.count, "error") %> prohibited your information from being saved:</h2>
+	    <ul>
+	    <% @user.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	  <% end %>
+	  <ol>
+	    <li>
+	      <%= form.label :username %>
+	      <%= form.text_field :username %>
+	    </li>
+	    <li>
+	      <%= form.label :email %>
+	      <%= form.text_field :email %>
+	    </li>
+	    <li>
+	      <%= form.label :password %>
+	      <%= form.password_field :password %>
+	    </li>
+	    <li>
+	      <%= form.label :password_confirmation, 'Confirm Password' %>
+	      <%= form.password_field :password_confirmation %>
+	    </li>
+	    <li class="submit">
+	      <%= submit_tag 'Sign Up', :disable_with => 'Signing you up...' %>
+	      or <%= link_to 'sign in', '#signin' %>
+	    </li>
+	  </ol>
+	  </fieldset>
+	<%- end -%>
+	</div>
+	
+</div>

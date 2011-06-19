@@ -3,9 +3,15 @@
 require 'rubygems'
 require 'mongo'
 source 'http://gemcutter.org'
+source "http://gems.github.com"
 
-gem "rails", "3.0.0.beta"
+gem "rails", "3.0.7"
 gem "mongo_mapper"
+gem 'thoughtbot-shoulda'
+gem 'factory_girl'
+gem 'mocha'
+gem 'redgreen'
+gem 'bcrypt-ruby'
 
 if defined?(BSON_C)
   warn 'YAY'

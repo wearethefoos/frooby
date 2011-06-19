@@ -55,4 +55,16 @@ Mongo::Application.routes.draw do |map|
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  resources :users
+  resources :comments, :member => {:upvote => :post}
+  resources :recipes,  :member => {:upvote => :post}
+  resource  :session
+
+  root :controller => 'recipes', :action => 'index'
+
+  match '/signin', :controller => 'sessions', :action => 'new'
+
+  # connect ':controller/:action/:id'
+  # connect ':controller/:action/:id.:format'
 end

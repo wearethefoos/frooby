@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>ShareFoodWith.Us</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag 'reset' %>
+  <%= stylesheet_link_tag '960' %>
+  <%= stylesheet_link_tag 'ui' %>
+  <%= stylesheet_link_tag 'layout' %>
+
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js' %>
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+<body>
+  <div id="site" class="container_12">
+    <div id="header" class="grid_12 alpha omega">
+      <h1 class="grid_2 alpha"><a href="<%= root_url %>">ShareFoodWith.Us</a></h1>
+        <ul class="grid_6" id="menu">
+          	<li>
+              <a href="<%= new_recipe_url %>">Submit</a>
+          	</li>
+        </ul>
+        <div class="grid_4 omega">
+          <% if current_user %>  
+            <%= current_user.email %> | <a href="<%= signin_url %>">signout</a>
+          <% else %>
+            <a href="<%= signin_url %>">Signin</a>
+          <% end %>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <%= yield %>
+</div>
+</body>
+</html>
